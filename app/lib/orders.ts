@@ -14,7 +14,7 @@ interface Order {
   status: string;
 }
 
-let orders: Order[] = []; // In-memory store
+const orders: Order[] = []; // In-memory store
 
 export function createOrder(data: Omit<Order, 'id' | 'status'>): Order {
   const order = {
