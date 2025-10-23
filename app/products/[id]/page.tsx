@@ -16,7 +16,8 @@ export default async function ProductDetailsPage({
 }: {
     params: { id: string }; // Inlined type for params
 }) {
-    const response = await fetch(`https://fakestoreapi.com/products/${params.id}`, {
+     const { id } = params;
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
         cache: "no-store",
     });
 
