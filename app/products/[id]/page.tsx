@@ -10,16 +10,13 @@ type Product = {
     image: string;
 };
 
-type ProductDetailsPageProps = {
-    params: {
-        id: string;
-    };
-};
 
 export default async function ProductDetailsPage({
-    params: { id },
-}: ProductDetailsPageProps) {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+    params, // Keep the structure simple
+}: {
+    params: { id: string }; // Inlined type for params
+}) {
+    const response = await fetch(`https://fakestoreapi.com/products/${params.id}`, {
         cache: "no-store",
     });
 
