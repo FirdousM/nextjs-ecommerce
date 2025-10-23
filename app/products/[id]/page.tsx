@@ -10,12 +10,15 @@ type Product = {
     category: string;
     image: string;
 };
+interface ProductId {
+    id: string;
+}
 interface ProductDetailsProps {
-    params: { id: string };
+    params: Promise<ProductId>;
 }
 
 export default async function ProductDetailsPage({ params }: ProductDetailsProps) {
-    const { id } = params;
+    const { id } = await params;
 
     const res = await fetch(`https://fakestoreapi.com/products/${id}`, { cache: "no-store" });
 
