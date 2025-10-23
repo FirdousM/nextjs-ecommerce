@@ -10,11 +10,11 @@ type Product = {
     category: string;
     image: string;
 };
-interface ProductDetailsPageProps {
+interface ProductDetailsProps {
     params: { id: string };
 }
 
-const ProductDetailsPage: React.FC<ProductDetailsPageProps> = async ({ params }) => {
+export default async function ProductDetailsPage({ params }: ProductDetailsProps) {
     const { id } = params;
 
     const res = await fetch(`https://fakestoreapi.com/products/${id}`, { cache: "no-store" });
@@ -54,4 +54,4 @@ const ProductDetailsPage: React.FC<ProductDetailsPageProps> = async ({ params })
         </div>
     );
 }
-export default ProductDetailsPage;
+
