@@ -25,7 +25,7 @@ interface CustomSession extends Session {
 // ];
 
 const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET || "test";
-console.log("users", users);
+
 export const authOptions: AuthOptions = {
     secret: NEXTAUTH_SECRET,
 
@@ -94,7 +94,7 @@ export const authOptions: AuthOptions = {
     },
 };
 
-const handler = NextAuth(authOptions);
 
 // Export handlers for Next.js App Router API
-export { handler as GET, handler as POST };
+export const GET = (req: Request) => NextAuth(authOptions)(req);
+export const POST = (req: Request) => NextAuth(authOptions)(req);
