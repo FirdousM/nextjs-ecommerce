@@ -14,19 +14,14 @@ interface ProductDetailsPageProps {
     params: { id: string };
 }
 
-export default async function ProductDetailsPage({ params }: ProductDetailsPageProps): Promise<JSX.Element> {
+const ProductDetailsPage: React.FC<ProductDetailsPageProps> = async ({ params }) => {
     const { id } = params;
 
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
-        cache: "no-store",
-    });
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`, { cache: "no-store" });
 
-    if (!response.ok) return notFound();
+    if (!res.ok) return notFound();
 
-    const product: Product = await response.json();
-
-    if (!product?.id) return notFound();
-
+    const product: Product = await res.json();
     const { title, price, description, image, category } = product;
 
     return (
@@ -59,3 +54,4 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
         </div>
     );
 }
+export default ProductDetailsPage;
