@@ -4,7 +4,7 @@ import { Header, Footer } from "@/app/components";
 import SessionProviderWrapper from "./providers/SessionProviderWrapper";
 
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/lib/auth.config";
 import CartProviderWrapper from "./providers/CartProviderWrapper";
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
