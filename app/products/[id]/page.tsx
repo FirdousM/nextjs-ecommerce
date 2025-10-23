@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { notFound } from "next/navigation";
 import { ProductControls } from "@/app/components";
 
@@ -13,9 +14,7 @@ interface ProductDetailsPageProps {
     params: { id: string };
 }
 
-export default async function ProductDetailsPage({
-    params,
-}: ProductDetailsPageProps) {
+export default async function ProductDetailsPage({ params }: ProductDetailsPageProps): Promise<JSX.Element> {
     const { id } = params;
 
     const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
