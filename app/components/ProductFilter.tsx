@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { ProductCard } from '@/app/components';
-import { useProductStore } from '@/app/store/productStore';
+import { Product, useProductStore } from '@/app/store/productStore';
 
-export default function ProductFilter({ allProducts }: { allProducts: any[] }) {
+export default function ProductFilter({ allProducts }: { allProducts: Product[] }) {
   const categories = ['All', "Men's Clothing", "Women's Clothing", 'Electronics', 'Jewelery'];
   const [active, setActive] = useState('All');
   const [products, setProducts] = useState(allProducts);
@@ -23,7 +23,7 @@ export default function ProductFilter({ allProducts }: { allProducts: any[] }) {
     else {
       console.log(category);
       setProducts(
-        allProducts.filter((p: any) =>
+        allProducts.filter((p: Product) =>
           p.category.toLowerCase() === category.toLowerCase()
         ));
     }
@@ -45,7 +45,7 @@ export default function ProductFilter({ allProducts }: { allProducts: any[] }) {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product: any) => (
+        {products.map((product: Product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

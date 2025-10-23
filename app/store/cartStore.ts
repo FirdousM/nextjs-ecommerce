@@ -8,15 +8,19 @@ export interface Product {
   price: number;
   image: string;
   quantity: number;
+  description: string;
+  category: string;
 }
-
+export interface CartItemType extends Product {
+  quantity: number;
+}
 interface CartState {
-  items: Product[];
+  items: CartItemType[];
   totalItems: number;
   addToCart: (product: Product, quantity?: number) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
-  syncCart: any;
+  syncCart: (serverCartData: ServerCartData) => Promise<void>;
 }
 interface ServerCartData {
   products: ProductItem[];
@@ -61,12 +65,12 @@ export const useCartStore = create<CartState>()(
         const localItems = get().items || [];
         const serverItems = serverCartData.products || [];
 
-        const mergedItems: Product[] = [];
+        const mergedItems: CartItemType[] = [];
 
         for (const serverItem of serverItems) {
 
           const localMatch = localItems.find(i => i.id === serverItem.productId);
-          let productData = getProductById(serverItem.productId);
+          const productData = getProductById(serverItem.productId);
           const finalQuantity = localMatch
             ? Math.max(localMatch.quantity, serverItem.quantity)
             : serverItem.quantity;

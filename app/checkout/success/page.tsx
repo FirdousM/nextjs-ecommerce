@@ -1,11 +1,12 @@
 'use client';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function SuccessPage() {
   const params = useSearchParams();
   const orderId = params.get('orderId');
-  const [order, setOrder] = useState<any>(null);
+  const [order, setOrder] = useState<{ id: string; address: string } | null>(null);
   const [cleared, setCleared] = useState(false);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function SuccessPage() {
   if (!orderId) {
     return (
       <div className="p-6 text-center text-red-600">
-        ❌ No order ID found.
+        No order ID found.
       </div>
     );
   }
@@ -60,12 +61,12 @@ export default function SuccessPage() {
       </div>
 
       <div className="mt-6">
-        <a
+        <Link
           href="/"
           className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700"
         >
           Continue Shopping
-        </a>
+        </Link>
       </div>
 
       {cleared && (

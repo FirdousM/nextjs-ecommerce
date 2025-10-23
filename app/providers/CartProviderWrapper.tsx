@@ -1,14 +1,17 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useCartStore } from '../store/cartStore'; // Ensure CartProduct is exported
+import { CartItemType, useCartStore } from '../store/cartStore'; // Ensure CartProduct is exported
 import { useSession } from 'next-auth/react';
+import { Product } from '../store/productStore';
+import { Session } from 'next-auth';
 // Import your custom session type
 
 // --- API Fetch Placeholder ---
 // You will need a backend API route like /api/cart that fetches the user's cart from your DB.
 // It must use the user's ID or a Bearer token for authorization.
-async function fetchServerCart(userId: string): Promise<any[]> {
+async function fetchServerCart(userId: string): Promise<CartItemType[]> {
+// async function fetchServerCart(userId: string): Promise<any[]> {
     // console.log(`Attempting to fetch server cart for User ID: ${userId}`);
 
     // 💡 IMPORTANT: Replace this with your actual secure API call.
@@ -31,7 +34,7 @@ async function fetchServerCart(userId: string): Promise<any[]> {
 // --- Provider Component ---
 export default function CartProviderWrapper({ children }: { children: React.ReactNode }) {
     // Cast the session data to your custom type for full property access
-    const { data: session, status } = useSession() as { data: any | null, status: string };
+    const { data: session, status } = useSession() as { data: { user: { id: string } } | null, status: string };
 
     // Select the action and hydration state from the store
     const syncCart = useCartStore((state) => state.syncCart);
@@ -53,9 +56,10 @@ export default function CartProviderWrapper({ children }: { children: React.Reac
             // console.log("Conditions met: Syncing cart.");
 
             fetchServerCart(userId)
-                .then(serverCartData => {
+                .then(serverCartArray => {
                     // 3. Reconcile the local cart (from localStorage) with the remote cart
-                    syncCart(serverCartData); 
+                    // syncCart(serverCartData); 
+                    syncCart({ products: serverCartArray.map(p => ({ productId: p.id, quantity: p.quantity })) });
                     // console.log("Cart synchronized successfully.");
                     setHasSynced(true); // Mark as synced
                 })

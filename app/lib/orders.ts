@@ -1,10 +1,15 @@
 // app/lib/orders.ts
 
+import { Product } from "../store/productStore";
+
 interface Order {
   id: string;
-  items: any[];
+  items: Product[];
   address: string;
-  user: any;
+  user: {
+    name: string;
+    email: string;
+  };
   createdAt: Date;
   status: string;
 }

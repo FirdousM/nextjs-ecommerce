@@ -8,9 +8,7 @@ interface CustomUser extends User {
     name: string;
     email: string;
 }
-interface MockDBUser extends CustomUser {
-    password: string;
-}
+
 interface CustomJWT extends JWT {
     id: string;
     name: string;

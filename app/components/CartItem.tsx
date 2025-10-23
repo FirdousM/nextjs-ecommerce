@@ -3,8 +3,12 @@
 
 import { useCartStore } from "../store/cartStore";
 import Link from "next/link";
+import { Product } from "../store/productStore";
 
-export default function CartItem({ item }: { item: any }) {
+interface CartItemType extends Product {
+    quantity: number;
+}
+export default function CartItem({ item }: { item: CartItemType }) {
     const { addToCart, removeFromCart } = useCartStore();
 
     const handleIncrease = () => addToCart({ ...item, quantity: 1 });

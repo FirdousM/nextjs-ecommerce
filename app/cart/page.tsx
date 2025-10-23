@@ -1,8 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import CartItem from '../components/CartItem';
 import CartSummary from '../components/CartSummary';
-import { useCartStore } from '../store/cartStore';
+import { CartItemType, useCartStore } from '../store/cartStore';
 
 
 export default function CartPage() {
@@ -12,7 +13,7 @@ export default function CartPage() {
         return (
             <div className="container mx-auto p-4 text-center text-gray-700">
                 <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
-                <a href="/products" className="text-purple-600 hover:underline">Browse Products</a>
+                <Link href="/products" className="text-purple-600 hover:underline">Browse Products</Link>
             </div>
         );
     }
@@ -21,7 +22,7 @@ export default function CartPage() {
         <div className="container mx-auto p-4 flex flex-col lg:flex-row gap-8">
             {/* Cart Items */}
             <div className="flex-1 flex flex-col gap-4">
-                {cartItems.map(item => (
+                {cartItems.map((item: CartItemType) => (
                     <CartItem key={item.id} item={item} />
                 ))}
             </div>
