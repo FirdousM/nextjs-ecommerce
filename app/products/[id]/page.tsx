@@ -9,14 +9,15 @@ type Product = {
     category: string;
     image: string;
 };
-
+interface ProductDetailsPageProps {
+    params: { id: string };
+}
 
 export default async function ProductDetailsPage({
-    params, // Keep the structure simple
-}: {
-    params: { id: string }; // Inlined type for params
-}) {
-     const { id } = params;
+    params,
+}: ProductDetailsPageProps) {
+    const { id } = params;
+
     const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
         cache: "no-store",
     });
