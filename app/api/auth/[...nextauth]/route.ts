@@ -6,7 +6,7 @@
 
 import NextAuth from "next-auth";
 // 🎯 FIX: Import the options from the new config file
-import { authOptions } from "@/app/lib/auth.config";
+import { authOptions } from "@/lib/auth.config";
 
 // --- App Router Handlers ---
 // The handler receives the authOptions and is executed by NextAuth.

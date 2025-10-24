@@ -6,7 +6,7 @@ import { Session } from 'next-auth';
 
 interface SessionProviderWrapperProps {
   children: ReactNode;
-  session?: Session | null | undefined; // initial session from server
+  session?: Session | null | undefined;
 }
 
 export default function SessionProviderWrapper({

@@ -1,6 +1,4 @@
-// app/lib/orders.ts
-
-import { Product } from "../store/productStore";
+import { Product } from "@/store/productStore";
 
 interface Order {
   id: string;
@@ -14,11 +12,11 @@ interface Order {
   status: string;
 }
 
-const orders: Order[] = []; // In-memory store
+const orders: Order[] = [];
 
 export function createOrder(data: Omit<Order, 'id' | 'status'>): Order {
   const order = {
-    id: Date.now().toString(), // unique timestamp ID
+    id: Date.now().toString(),
     status: 'success',
     ...data,
   };

@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { FaShoppingCart } from 'react-icons/fa';
-import { useCartStore } from '../store/cartStore';
+import { useCartStore } from '@/store/cartStore';
 
 export default function HeaderCartBadge() {
   const totalItems = useCartStore((state) => state.totalItems);

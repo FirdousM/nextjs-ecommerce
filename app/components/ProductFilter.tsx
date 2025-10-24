@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { ProductCard } from '@/app/components';
-import { Product, useProductStore } from '@/app/store/productStore';
+import { ProductCard } from '@/components';
+import { Product, useProductStore } from '@/store/productStore';
 
 export default function ProductFilter({ allProducts }: { allProducts: Product[] }) {
   const categories = ['All', "Men's Clothing", "Women's Clothing", 'Electronics', 'Jewelery'];

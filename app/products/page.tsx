@@ -1,4 +1,4 @@
-import { ProductFilter } from '@/app/components';
+import { ProductFilter } from '@/components';
 
 export default async function ProductsPage() {
     // Server fetch

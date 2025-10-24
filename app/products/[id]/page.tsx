@@ -1,6 +1,5 @@
-import { JSX } from "react";
 import { notFound } from "next/navigation";
-import { ProductControls } from "@/app/components";
+import { ProductControls } from "@/components";
 
 type Product = {
     id: number;

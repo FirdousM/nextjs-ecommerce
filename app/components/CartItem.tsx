@@ -1,9 +1,9 @@
 'use client';
 
 
-import { useCartStore } from "../store/cartStore";
+import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
-import { Product } from "../store/productStore";
+import { Product } from "@/store/productStore";
 
 interface CartItemType extends Product {
     quantity: number;

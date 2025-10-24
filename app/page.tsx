@@ -1,7 +1,7 @@
-import HeroSection from './components/HeroSection';
-import ProductCard from './components/ProductCard';
-import PromoBanner from './components/PromotionBanner';
-import { Product } from './store/productStore';
+import { HeroSection } from '@/components';
+import { ProductCard } from '@/components';
+import { PromoBanner } from '@/components';
+import { Product } from '@/store/productStore';
 
 export default async function Home() {
   const products = await fetch('https://fakestoreapi.com/products?limit=6').then(res => res.json());

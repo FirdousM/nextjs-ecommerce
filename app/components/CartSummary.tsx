@@ -1,12 +1,11 @@
 'use client';
 
-import { useCartStore } from "../store/cartStore";
+import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
-import Button from "./Button";
+import { Button } from "@/components";
 
 export default function CartSummary() {
     const { items: cart = [] } = useCartStore();
-    // let cart = [];
     const totalPrice = cart?.reduce((sum: number, item: { price: number; quantity: number; }) => sum + item.price * item.quantity, 0);
 
     return (

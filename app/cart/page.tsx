@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import CartItem from '../components/CartItem';
-import CartSummary from '../components/CartSummary';
-import { CartItemType, useCartStore } from '../store/cartStore';
+import { CartItem } from '@/components';
+import { CartSummary } from '@/components';
+import { CartItemType, useCartStore } from '@/store/cartStore';
 
 
 export default function CartPage() {

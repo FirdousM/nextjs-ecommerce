@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createOrder } from '@/app/lib/orders';
+import { createOrder } from '@/lib/orders';
 
 export async function POST(req: Request) {
   const { items, address, user } = await req.json();

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Product } from '../store/productStore';
+import { Product } from '@/store/productStore';
 
 export default function ProductCard({ product }: { product: Product }) {
   return (

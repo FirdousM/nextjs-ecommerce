@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useCartStore } from '@/app/store/cartStore';
-import Button from './Button';
+import { useCartStore } from '@/store/cartStore';
+import { Button } from '@/components';
 type Product = {
   id: number;
   title: string;

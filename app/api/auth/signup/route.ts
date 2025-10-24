@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { users } from "@/app/lib/memoryUsers";
+import { users } from "@/lib/memoryUsers";
 
 export async function POST(req: Request) {
   const { name, email, password } = await req.json();

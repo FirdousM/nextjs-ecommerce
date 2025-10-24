@@ -1,9 +1,8 @@
 import { type AuthOptions, type Session, type User } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { users } from "@/app/lib/memoryUsers"; // Assuming this path is correct
+import { users } from "@/lib/memoryUsers";
 
-// --- Custom Types (Keep these) ---
 interface CustomUser extends User {
     id: string;
     name: string;
@@ -22,7 +21,6 @@ interface CustomSession extends Session {
 
 const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET || "test";
 
-// --- Auth Options (Export this only) ---
 export const authOptions: AuthOptions = {
     secret: NEXTAUTH_SECRET,
     providers: [
@@ -36,7 +34,7 @@ export const authOptions: AuthOptions = {
                 if (!credentials) return null;
                 const user = users.find(u => u.email === credentials.email);
                 if (!user || user.password !== credentials.password) return null;
-                
+
                 // Ensure the returned object matches CustomUser structure
                 return { id: user.id, name: user.name, email: user.email } as CustomUser;
             },

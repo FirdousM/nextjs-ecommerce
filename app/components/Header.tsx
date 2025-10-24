@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import HeaderCartBadge from './HeaderCartBadge';
-import { Button } from './';
+import { FaUser } from 'react-icons/fa';
+import { HeaderCartBadge } from '@/components';
+import { Button } from '@/components';
 
 export default function Header() {
 

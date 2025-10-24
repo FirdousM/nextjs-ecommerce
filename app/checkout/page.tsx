@@ -1,8 +1,8 @@
 'use client';
-import { useCartStore } from '@/app/store/cartStore';
+import { useCartStore } from '@/store/cartStore';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '../components';
+import { Button } from '@/components';
 
 export default function CheckoutPage() {
   const { items, totalItems } = useCartStore();
@@ -12,17 +12,21 @@ export default function CheckoutPage() {
 
   const handleCheckout = async () => {
     setLoading(true);
-    const res = await fetch('/api/orders', {
+
+    const resPromise = fetch('/api/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items, address }),
     });
-    const order = await res.json();
-    localStorage.setItem('lastOrder', JSON.stringify(order));
+
+    const [order] = await Promise.all([resPromise.then(r => r.json())]);
+
     useCartStore.getState().clearCart();
+    localStorage.setItem('lastOrder', JSON.stringify(order));
     router.push(`/checkout/success?orderId=${order.id}`);
     setLoading(false);
   };
+
 
   return (
     <div className="container mx-auto p-4">

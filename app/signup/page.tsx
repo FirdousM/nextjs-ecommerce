@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "../components";
+import { Button } from "@/components";
 
 export default function SignupPage() {
     const [name, setName] = useState("");
@@ -40,7 +40,6 @@ export default function SignupPage() {
         <div className="flex justify-center items-center min-h-screen bg-gray-50">
             <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
 
-                {/* Placeholder DP */}
                 <div className="flex justify-center mb-6">
                     <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-400 text-xl font-bold">
                         DP

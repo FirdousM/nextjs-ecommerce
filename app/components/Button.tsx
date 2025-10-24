@@ -1,7 +1,6 @@
 'use client';
 
 import React from "react";
-import Loader from "./Loader";
 
 
 interface ButtonProps {
